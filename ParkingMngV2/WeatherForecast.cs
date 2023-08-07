@@ -1,4 +1,4 @@
-namespace ParkingManagement
+namespace ParkingMngV2
 {
     public class WeatherForecast
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingManagement", "ParkingManagement\ParkingManagement.csproj", "{0F36A92F-87A2-40EC-9E2D-0C2E4D98CA95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingMngV2", "ParkingMngV2\ParkingMngV2.csproj", "{3AFE06C4-A64C-427E-860E-A84832058C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0F36A92F-87A2-40EC-9E2D-0C2E4D98CA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F36A92F-87A2-40EC-9E2D-0C2E4D98CA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F36A92F-87A2-40EC-9E2D-0C2E4D98CA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F36A92F-87A2-40EC-9E2D-0C2E4D98CA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AFE06C4-A64C-427E-860E-A84832058C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AFE06C4-A64C-427E-860E-A84832058C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AFE06C4-A64C-427E-860E-A84832058C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AFE06C4-A64C-427E-860E-A84832058C9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C8540905-F759-4056-A285-707FB5AB6E48}
+		SolutionGuid = {5F031B28-2ECE-47D8-8628-CBFB63F88E62}
 	EndGlobalSection
 EndGlobal
