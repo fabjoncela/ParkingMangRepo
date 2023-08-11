@@ -16,7 +16,6 @@ namespace ParkingMngV2.Controllers
         {
             _db = db;
         }
-
         [HttpGet]
         [Route("api/parkingspots/GetParkingSpots")]
 
@@ -38,12 +37,6 @@ namespace ParkingMngV2.Controllers
                 //type = ResponseType.Failure;
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
-
-
-
-
-
-
 
         }
         
