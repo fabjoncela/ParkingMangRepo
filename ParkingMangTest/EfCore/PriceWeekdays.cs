@@ -14,6 +14,6 @@ namespace ParkingMngV2.EfCore
         public int dailyRate { get; set; }
         [Required]
         public int minimumHours { get; set; }
-        public virtual ICollection<PriceWeekdays> priceweekdays { get; set; }
+       // public virtual ICollection<PriceWeekdays> priceweekdays { get; set; }
     }
 }

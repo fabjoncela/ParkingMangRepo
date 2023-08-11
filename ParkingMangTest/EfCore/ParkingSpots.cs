@@ -7,14 +7,14 @@ namespace ParkingMngV2.EfCore
     public class ParkingSpots
     {
         [Key, Required]
-        public int Id { get; set; }
+        public int ParkingSpotsId { get; set; }
         [Required]
         public int? reservedSpots { get; set; }
         [Required]
         public int? freeSpots { get; set; }
         [Required]
         public int totalSpots { get; set; }
-        public virtual ICollection<ParkingSpots> parkingSpots { get; set; }
+        //public virtual ICollection<ParkingSpots> parkingSpots { get; set; }
         
     }
 }

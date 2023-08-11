@@ -4,8 +4,7 @@ namespace ParkingMngV2.EfCore
 {
     public class EF_DataContext : DbContext
     {
-        public EF_DataContext(DbContextOptions<EF_DataContext>
-            options): base(options) { }
+        public EF_DataContext(DbContextOptions<EF_DataContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseSerialColumns();
@@ -13,12 +12,12 @@ namespace ParkingMngV2.EfCore
 
 
 
-        public DbSet<ParkingSpots> ParkingSpots { get; set; }
-        public DbSet<Subscribers> Subscribers { get; set; }
-        public DbSet<DailyLogs> DailyLogs { get; set; }
-        public DbSet<PriceWeekdays> PriceWeekdays { get; set; }
-        public DbSet<PriceWeekend> PriceWeekend { get; set;}
-        public DbSet<Subscriptions> Subscriptions { get; set; }
+        public DbSet<ParkingSpots> parkingSpots { get; set; }
+        public DbSet<Subscribers> subscribers { get; set; }
+        public DbSet<DailyLogs> dailyLogs { get; set; }
+        public DbSet<PriceWeekdays> priceWeekdays { get; set; }
+        public DbSet<PriceWeekend> priceWeekend { get; set;}
+        public DbSet<Subscriptions> subscriptions { get; set; }
         
         
 

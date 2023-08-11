@@ -17,16 +17,62 @@ namespace ParkingMngV2.Model
         public List<ParkingSpots> GetParkingSpots()
         {
             List<ParkingSpots> response = new List<ParkingSpots>();
-            var dataList = _context.ParkingSpots.ToList();
+            var dataList = _context.parkingSpots.ToList();
             dataList.ForEach(row => response.Add(new ParkingSpots(){
-                Id = row.Id,
+                ParkingSpotsId = row.ParkingSpotsId,
                 reservedSpots = row.reservedSpots,
                 freeSpots = row.freeSpots,
-                totalSpots = row.totalSpots,
+                totalSpots = row.totalSpots
             }
             ));
             return response;
         }
+        /*
+        public ParkingSpots GetParkingSpotsById(int ParkingSpotsId)
+        {
+            ParkingSpots response = new ParkingSpots();
+            var row = _context.ParkingSpots.Where(d=>d.ParkingSpotsId.Equals(ParkingSpotsId)).FirstOrDefault();
+            return new ParkingSpots()
+            {
+                ParkingSpotsId = row.ParkingSpotsId,
+                reservedSpots = row.reservedSpots,
+                freeSpots = row.freeSpots,
+                totalSpots = row.totalSpots
+            };            
+        }
+        */
+
+
+
+        /// <summary>
+        /// Put/Patch
+        /// </summary>
+        /// <param name="parkingSpotsDto"></param>
+        public void UpdateParkingSpots(ParkingSpotsDto parkingSpotsDto)
+        {
+            ParkingSpots dbTable = new ParkingSpots();
+            if(parkingSpotsDto.Id > 0)
+            {
+                //put
+                dbTable = _context.parkingSpots.Where(d => d.ParkingSpotsId.Equals(parkingSpotsDto.Id)).FirstOrDefault();
+                if (dbTable != null)//nqs ka tablea t dhena
+                {    
+
+                    dbTable.reservedSpots = parkingSpotsDto.reservedSpots;
+                    dbTable.freeSpots = parkingSpotsDto.freeSpots;
+                    dbTable.totalSpots = parkingSpotsDto.totalSpots;
+                }
+                //else
+                //{
+                    
+                //}
+                _context.SaveChanges();
+            }
+        }
+
+        
+
+
 
     }
 }
