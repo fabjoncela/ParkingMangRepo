@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ParkingMngV2.EfCore;
+using ParkingMngV2.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<EF_DataContext>(//!!! import efcore
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("Ef_Postgres_Db"))//!!! import EntityFrameworkCore
     );
 
+builder.Services.AddScoped<DbHelper>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

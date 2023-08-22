@@ -45,7 +45,7 @@ namespace ParkingMngV2.Model
 
 
         /// <summary>
-        /// Put/Patch
+        /// it doest the Put/Patch/Post
         /// </summary>
         /// <param name="parkingSpotsDto"></param>
         public void UpdateParkingSpots(ParkingSpotsDto parkingSpotsDto)
@@ -59,8 +59,7 @@ namespace ParkingMngV2.Model
                 {    
 
                     dbTable.reservedSpots = parkingSpotsDto.reservedSpots;
-                    dbTable.freeSpots = parkingSpotsDto.freeSpots;
-                    dbTable.totalSpots = parkingSpotsDto.totalSpots;
+                    dbTable.freeSpots = parkingSpotsDto.freeSpots;                   
                 }
                 //else
                 //{
@@ -70,7 +69,42 @@ namespace ParkingMngV2.Model
             }
         }
 
-        
+        public List<PriceWeekdays> GetPriceWeekdays()
+        {
+            List<PriceWeekdays> response = new List<PriceWeekdays>();
+            var dataList = _context.priceWeekdays.ToList();
+            dataList.ForEach(row => response.Add(new PriceWeekdays()
+            {
+                Id = row.Id,
+                dailyRate = row.dailyRate,
+                hourlyRate = row.hourlyRate, 
+                minimumHours = row.minimumHours,
+            }));
+            return response;
+        }
+
+        public void PutPriceWeekdays(PriceWeekdaysDto priceWeekdays)
+        {
+            PriceWeekdays dbTable = new PriceWeekdays();
+            if (priceWeekdays.Id > 0)
+            {
+                //this is the put method for the Weekdays Price
+                dbTable = _context.priceWeekdays.Where(d => d.Id.Equals(priceWeekdays.Id)).FirstOrDefault();
+                if (dbTable != null)
+                {
+                    dbTable.hourlyRate = priceWeekdays.hourlyPrice;
+                    dbTable.dailyRate = priceWeekdays.dailyPrice;
+                    dbTable.minimumHours = priceWeekdays.minimumHours;
+                }
+                _context.SaveChanges();
+            }
+        }
+
+
+
+
+
+
 
 
 

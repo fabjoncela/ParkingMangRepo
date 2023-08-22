@@ -18,6 +18,6 @@ namespace ParkingMngV2.EfCore
         public TimeOnly checkOut { get; set; }
         [Required]
         public int price { get; set; }
-        public virtual ICollection<DailyLogs> dailylogs { get; set; }
+       // public virtual ICollection<DailyLogs> dailylogs { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace ParkingMngV2.EfCore
         [Required]
         public DateOnly endDate { get; set; }
 
-
-        public virtual ICollection<Subscriptions> subscriptions { get; set; }
+        public bool isDeleted { get; set; } = false;
+        //public virtual ICollection<Subscriptions> subscriptions { get; set; }
     }
 }

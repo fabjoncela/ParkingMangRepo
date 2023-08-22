@@ -23,7 +23,8 @@ namespace ParkingMngV2.EfCore
         [Required]
         public string plateNumber { get; set; }
 
-        public virtual ICollection<Subscribers> subscribers
-        { get; set; }
+        public bool isDeleted { get; set; } = false;
+        //public virtual ICollection<Subscribers> subscribers
+       // { get; set; }
     }
 }

@@ -2,30 +2,26 @@
 using ParkingMangTest.Model;
 using ParkingMngV2.EfCore;
 using ParkingMngV2.Model;
-using Microsoft.EntityFrameworkCore;
-//using Microsoft.Kiota.Abstractions;
 
-namespace ParkingMngV2.Controllers
+namespace ParkingMangTest.Controllers
 {
     [ApiController]
-    
-    public class PSpotsController : ControllerBase
+    public class WeekPricesController : ControllerBase
     {
         private readonly DbHelper _db;
-        public PSpotsController(EF_DataContext eF_DataContext, DbHelper db)
+        public WeekPricesController(EF_DataContext eF_DataContext, DbHelper db)
         {
             _db = db;
         }
-        [HttpGet]
-        [Route("api/[controller]/GetParkingSpots")]
 
-        public IActionResult Get()
+        [HttpGet]
+        [Route("api/[controller]/GetPriceWeekdays")]
+        public IActionResult GetPriceWeekdays()
         {
             ResponseType type = ResponseType.Success;
             try
             {
-                IEnumerable<ParkingSpots> data = _db.GetParkingSpots();
-                
+                IEnumerable<PriceWeekdays> data = _db.GetPriceWeekdays();
                 if(!data.Any())
                 {
                     type = ResponseType.NotFound;
@@ -34,26 +30,36 @@ namespace ParkingMngV2.Controllers
             }
             catch (Exception ex)
             {
-                //type = ResponseType.Failure;
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
-
         }
         [HttpPut]
-        [Route("api/[controller]/UpdateParkingSpots")]
-        public IActionResult Put([FromBody] ParkingSpotsDto parkingSpots)
+        [Route("api/[controller]/UpdatePriceWeekdays")]
+        public IActionResult SavePriceWeekdays([FromBody] PriceWeekdaysDto priceWeekdays)
         {
             try
             {
                 ResponseType type = ResponseType.Success;
-                _db.UpdateParkingSpots(parkingSpots);
-                return Ok(ResponseHandler.GetAppResponse(type, parkingSpots));
+                _db.PutPriceWeekdays(priceWeekdays);
+                return Ok(ResponseHandler.GetAppResponse(type, priceWeekdays));
             }
             catch (Exception ex)
             {
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
         }
+        
+
+
+
+
+
+
+
+
+
+
+
 
 
 
