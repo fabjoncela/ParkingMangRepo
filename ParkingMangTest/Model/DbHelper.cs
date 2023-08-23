@@ -150,6 +150,26 @@ namespace ParkingMngV2.Model
             return response;
         }
 
+        public void UpdateSubscriber(Subscribers subscribers)
+        {
+            Subscribers dbTable = _context.subscribers.FirstOrDefault(d => d.Id == subscribers.Id);
+            if (dbTable != null)
+            {
+                dbTable.firstName = subscribers.firstName;
+                dbTable.lastName = subscribers.lastName;
+                dbTable.cardNumberId = subscribers.cardNumberId;
+                dbTable.phoneNumber = subscribers.phoneNumber;
+                dbTable.email = subscribers.email;
+                dbTable.birthday = subscribers.birthday;
+                dbTable.plateNumber = subscribers.plateNumber;
+                _context.SaveChanges();
+            }
+        }
+
+
+
+
+
 
 
 

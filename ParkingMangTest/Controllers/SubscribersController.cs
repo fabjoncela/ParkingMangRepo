@@ -75,11 +75,44 @@ namespace ParkingMangTest.Controllers
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
         }
+        [HttpPut]
+        [Route("api/[controller]/UpdateSubscriber")]
+        public IActionResult UpdateSubscriber([FromBody] Subscribers subscribers)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                _db.UpdateSubscriber(subscribers);
+
+                return Ok("The Subscriber has been updated Successfully");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("There has been an error: " + ex.Message);
+            }
+        }
 
 
 
 
 
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
 }
