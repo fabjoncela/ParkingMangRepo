@@ -22,7 +22,7 @@ namespace ParkingMangTest.Controllers
             try
             {
                 IEnumerable<Subscribers> data = _db.GetSubscriber();
-                if(!data.Any())
+                if (!data.Any())
                 {
                     type = ResponseType.NotFound;
                 }
@@ -46,23 +46,28 @@ namespace ParkingMangTest.Controllers
                 if (!string.IsNullOrEmpty(firstName))
                 {
                     data = data.Where(subscriber => subscriber.firstName == firstName);
-                }    
-                if(!string.IsNullOrEmpty(lastName))
+                }
+
+                if (!string.IsNullOrEmpty(lastName))
                 {
                     data = data.Where(subscriber => subscriber.lastName == lastName);
                 }
+
                 if (cardNrId.HasValue)
                 {
                     data = data.Where(subscriber => subscriber.cardNumberId == cardNrId);
                 }
+
                 if (!string.IsNullOrEmpty(email))
                 {
                     data = data.Where(subscriber => subscriber.email == email);
                 }
+
                 if (!data.Any())
                 {
                     type = ResponseType.NotFound;
                 }
+
                 return Ok(ResponseHandler.GetAppResponse(type, data));
             }
             catch (Exception ex)

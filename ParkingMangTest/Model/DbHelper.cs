@@ -48,18 +48,19 @@ namespace ParkingMngV2.Model
         /// it doest the Put/Patch/Post
         /// </summary>
         /// <param name="parkingSpotsDto"></param>
-        public void UpdateParkingSpots(ParkingSpotsDto parkingSpotsDto)
+        public void UpdateParkingSpots(ParkingSpotsDto parkingSpots)
         {
             ParkingSpots dbTable = new ParkingSpots();
-            if(parkingSpotsDto.Id > 0)
+            if(parkingSpots.Id > 0)
             {
                 //put
-                dbTable = _context.parkingSpots.Where(d => d.ParkingSpotsId.Equals(parkingSpotsDto.Id)).FirstOrDefault();
+                dbTable = _context.parkingSpots.Where(d => d.ParkingSpotsId.Equals(parkingSpots.Id)).FirstOrDefault();
                 if (dbTable != null)//nqs ka tablea t dhena
                 {    
 
-                    dbTable.reservedSpots = parkingSpotsDto.reservedSpots;
-                    dbTable.freeSpots = parkingSpotsDto.freeSpots;                   
+                    dbTable.reservedSpots = parkingSpots.reservedSpots;
+                    dbTable.freeSpots = parkingSpots.freeSpots;        
+                    dbTable.totalSpots = parkingSpots.totalSpots;
                 }
                 //else
                 //{
