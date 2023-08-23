@@ -100,6 +100,61 @@ namespace ParkingMngV2.Model
             }
         }
 
+        public List<PriceWeekend> GetPriceWeekend()
+        {
+            List<PriceWeekend> response = new List<PriceWeekend>();
+            var dataList = _context.priceWeekend.ToList();
+            dataList.ForEach(row => response.Add(new PriceWeekend()
+            {
+                Id = row.Id,
+                hourlyRate = row.hourlyRate,
+                minimumHours = row.minimumHours,
+                dailyRate = row.dailyRate
+
+            }));
+            return response;
+        }
+        public void PutPriceWeekend(PriceWeekendDto priceWeekend)
+        {
+            PriceWeekend dbTable = new PriceWeekend();
+            if(priceWeekend.Id > 0)
+            {
+                //the code for PUT
+                dbTable = _context.priceWeekend.Where(d => d.Id.Equals(priceWeekend.Id)).FirstOrDefault();
+                if (dbTable != null)
+                {
+                    dbTable.hourlyRate = priceWeekend.hourlyPrice;
+                    dbTable.dailyRate = priceWeekend.dailyPrice;
+                    dbTable.minimumHours = priceWeekend.minimumHours;
+                }
+                _context.SaveChanges();
+            }
+        }
+        public List<Subscribers> GetSubscriber()
+        {
+            List<Subscribers> response = new List<Subscribers>();
+            var dataList = _context.subscribers.ToList();
+            dataList.ForEach(row => response.Add(new Subscribers()
+            {
+                Id = row.Id,
+                firstName = row.firstName,
+                lastName = row.lastName,
+                phoneNumber = row.phoneNumber,
+                cardNumberId = row.cardNumberId,
+                plateNumber = row.plateNumber,
+                email = row.email,
+                birthday = row.birthday,
+                isDeleted = row.isDeleted
+            }));
+            return response;
+        }
+
+
+
+
+
+
+
 
 
 

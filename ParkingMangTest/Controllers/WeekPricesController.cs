@@ -48,8 +48,43 @@ namespace ParkingMangTest.Controllers
                 return BadRequest(ResponseHandler.GetExceptionResponse(ex));
             }
         }
-        
 
+        [HttpGet]
+        [Route("api/[controller]/GetPriceWeekend")]
+        public IActionResult GetPriceWeekend()
+        {
+            ResponseType type = ResponseType.Success;
+            try
+            {
+                IEnumerable<PriceWeekend> data = _db.GetPriceWeekend();
+                if(!data.Any())
+                {
+                    type = ResponseType.NotFound;
+                }
+                return Ok(ResponseHandler.GetAppResponse(type, data));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+        }
+
+        [HttpPut]
+        [Route("api/[controller]/UpdatePriceWeekend")]
+        public IActionResult PutPriceWeekend([FromBody] PriceWeekendDto priceWeekend)
+        {
+            try
+            {
+                ResponseType type = ResponseType.Success;
+                _db.PutPriceWeekend(priceWeekend);
+                return Ok(ResponseHandler.GetAppResponse(type, priceWeekend));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ResponseHandler.GetExceptionResponse(ex));
+            }
+
+        }
 
 
 
